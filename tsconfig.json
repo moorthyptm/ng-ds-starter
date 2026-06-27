@@ -3,6 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "rootDir": ".",
     "paths": {
       "@ptm/components/utils": [
         "./projects/components/utils/src/index.ts"

@@ -1,8 +1,102 @@
-<div class="p-8">
-  <h1 class="text-2xl font-bold mb-4">Design System Playground</h1>
-  <div class="flex gap-4">
-    <button ptmButton>Primary Button</button>
-    <a href="#" ptmButton>Link Button</a>
-  </div>
-</div>
+<main class="p-8 max-w-4xl mx-auto space-y-8">
+  <section class="flex items-center justify-between">
+    <div>
+      <h1 class="mb-2">Design System</h1>
+      <p class="text-muted-foreground">Component Playground</p>
+    </div>
+    <button
+      ptmButton
+      variant="outline"
+      size="icon"
+      (click)="toggleDarkMode()"
+      aria-label="Toggle Dark Mode"
+    >
+      @if (isDarkMode()) {
+        <svg lucideSun class="size-5 text-foreground"></svg>
+      } @else {
+        <svg lucideMoon class="size-5 text-foreground"></svg>
+      }
+    </button>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="border-b pb-2">Button Variants</h2>
+    <div class="flex flex-wrap gap-4">
+      <button ptmButton variant="primary">Primary</button>
+      <button ptmButton variant="secondary">Secondary</button>
+      <button ptmButton variant="destructive">Destructive</button>
+      <button ptmButton variant="outline">Outline</button>
+      <button ptmButton variant="ghost">Ghost</button>
+      <button ptmButton variant="link">Link</button>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="border-b pb-2">Button Sizes & Icons</h2>
+    <div class="flex items-center flex-wrap gap-4">
+      <button ptmButton size="sm">Small</button>
+      <button ptmButton size="default">Default</button>
+      <button ptmButton size="lg">Large</button>
+
+      <button ptmButton variant="outline" size="icon" aria-label="Settings">
+        <svg lucideSettings class="size-5"></svg>
+      </button>
+
+      <button ptmButton>
+        <svg lucideSettings class="size-4 mr-2"></svg>
+        Settings
+      </button>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="border-b pb-2">Custom Class Merging</h2>
+    <p class="text-sm text-muted-foreground mb-4">
+      Passing standard Tailwind classes seamlessly overrides the underlying variants using
+      <code>tailwind-merge</code>.
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <button
+        ptmButton
+        class="w-full bg-indigo-500 hover:bg-indigo-600 rounded-full shadow-lg text-white"
+      >
+        Fully Custom Block Button
+      </button>
+
+      <button
+        ptmButton
+        variant="destructive"
+        class="border-2 border-red-900 font-bold uppercase tracking-widest px-8"
+      >
+        Modified Destructive
+      </button>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="border-b pb-2">Anchor Tags (Links)</h2>
+    <p class="text-sm text-muted-foreground mb-4">
+      The <code>ptmButton</code> directive seamlessly styles standard HTML
+      <code>&lt;a&gt;</code> tags so they look and act exactly like buttons.
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <a href="#" ptmButton variant="primary">Primary Link</a>
+      <a href="#" ptmButton variant="outline">Outline Link</a>
+      <a href="#" ptmButton variant="ghost">Ghost Link</a>
+      <a href="#" ptmButton variant="link">External Link</a>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="border-b pb-2">Disabled States</h2>
+    <div class="flex flex-wrap gap-4">
+      <button ptmButton variant="primary" disabled>Primary</button>
+      <button ptmButton variant="secondary" disabled>Secondary</button>
+      <button ptmButton variant="outline" disabled>Outline</button>
+      <button ptmButton variant="ghost" disabled>Ghost</button>
+      <button ptmButton variant="link" disabled>Link</button>
+      <button ptmButton variant="destructive" disabled>Destructive</button>
+    </div>
+  </section>
+</main>
 <router-outlet></router-outlet>
