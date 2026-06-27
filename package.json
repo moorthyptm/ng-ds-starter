@@ -1,6 +1,35 @@
 {
   "name": "ng-ds-starter",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "An open-source design system starter kit built with Angular 22 signals, Storybook, strict TypeScript, ESLint, Prettier, Husky, and Commitlint.",
+  "author": {
+    "name": "moorthyptm",
+    "url": "https://github.com/moorthyptm"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moorthyptm/ng-ds-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/moorthyptm/ng-ds-starter/issues"
+  },
+  "homepage": "https://github.com/moorthyptm/ng-ds-starter#readme",
+  "keywords": [
+    "angular",
+    "angular-cli",
+    "angular-signals",
+    "signals",
+    "storybook",
+    "design-system",
+    "starter-kit",
+    "boilerplate",
+    "typescript",
+    "eslint",
+    "prettier",
+    "husky",
+    "commitlint"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
