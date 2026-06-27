@@ -4,7 +4,12 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "components": ["./dist/components"]
+      "@ptm/components": [
+        "./projects/components/src/index.ts"
+      ],
+      "@ptm/components/*": [
+        "./projects/components/*/src/index.ts"
+      ]
     },
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
