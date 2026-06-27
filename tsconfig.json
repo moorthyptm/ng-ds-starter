@@ -4,6 +4,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
+      "@ptm/components/utils": [
+        "./projects/components/utils/src/index.ts"
+      ],
       "@ptm/components": [
         "./projects/components/src/index.ts"
       ],
