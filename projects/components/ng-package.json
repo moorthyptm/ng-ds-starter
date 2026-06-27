@@ -4,5 +4,12 @@
   "lib": {
     "entryFile": "src/index.ts"
   },
-  "assets": ["src/styles/theme.css"]
+  "assets": [
+    "src/styles/theme.css",
+    {
+      "input": "button",
+      "glob": "USAGE.md",
+      "output": "button"
+    }
+  ]
 }

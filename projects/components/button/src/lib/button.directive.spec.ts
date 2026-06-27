@@ -1,6 +1,7 @@
 import { Component, input, inputBinding, signal } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { LucideSettings } from '@lucide/angular';
 import { PtmButtonDirective } from './button.directive';
 import { ButtonVariants } from './button.variants';
 
@@ -17,6 +18,17 @@ class TestHostComponent {
   readonly userClass = input<string>('', { alias: 'class' });
 }
 
+@Component({
+  template: `
+    <button ptmButton size="icon" aria-label="Open settings">
+      <svg lucideSettings class="size-5"></svg>
+    </button>
+    <a ptmButton variant="secondary" href="/settings">Settings</a>
+  `,
+  imports: [PtmButtonDirective, LucideSettings],
+})
+class MultiElementHostComponent {}
+
 describe('PtmButtonDirective', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   const variantSignal = signal<ButtonVariants['variant']>('primary');
@@ -29,7 +41,7 @@ describe('PtmButtonDirective', () => {
     classSignal.set('');
 
     await TestBed.configureTestingModule({
-      imports: [TestHostComponent],
+      imports: [TestHostComponent, MultiElementHostComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestHostComponent, {
@@ -118,5 +130,23 @@ describe('PtmButtonDirective', () => {
     expect(button.className).toContain('custom-class');
     expect(button.className).toContain('bg-red-500');
     expect(button.className).not.toMatch(/(^|\s)bg-primary(\s|$)/);
+  });
+
+  it('should apply to native button and anchor elements', () => {
+    const multiFixture = TestBed.createComponent(MultiElementHostComponent);
+
+    multiFixture.detectChanges();
+    const elements = multiFixture.debugElement.queryAll(By.directive(PtmButtonDirective));
+    const button = elements[0].nativeElement as HTMLButtonElement;
+    const anchor = elements[1].nativeElement as HTMLAnchorElement;
+
+    expect(elements).toHaveLength(2);
+    expect(button.tagName).toBe('BUTTON');
+    expect(button.getAttribute('aria-label')).toBe('Open settings');
+    expect(button.querySelector('svg')).not.toBeNull();
+    expect(button.className).toContain('w-10');
+    expect(anchor.tagName).toBe('A');
+    expect(anchor.getAttribute('href')).toBe('/settings');
+    expect(anchor.className).toContain('bg-secondary');
   });
 });
